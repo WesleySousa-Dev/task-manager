@@ -1,4 +1,4 @@
-package org.example.model;
+package com.github.wesleysousa_dev.taskmanager.model;
 
 public class Task {
     private String name;

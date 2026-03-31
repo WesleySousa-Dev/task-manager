@@ -1,9 +1,9 @@
-package org.example.util;
+package com.github.wesleysousa_dev.taskmanager.util;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
-import org.example.model.User;
+import com.github.wesleysousa_dev.taskmanager.model.User;
 
 import java.io.File;
 import java.util.ArrayList;

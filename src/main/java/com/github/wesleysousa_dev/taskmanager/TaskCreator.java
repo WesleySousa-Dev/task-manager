@@ -1,9 +1,9 @@
-package org.example;
+package com.github.wesleysousa_dev.taskmanager;
 
-import org.example.model.Priority;
-import org.example.model.Task;
-import org.example.model.User;
-import org.example.util.JsonManipulator;
+import com.github.wesleysousa_dev.taskmanager.model.Priority;
+import com.github.wesleysousa_dev.taskmanager.model.Task;
+import com.github.wesleysousa_dev.taskmanager.model.User;
+import com.github.wesleysousa_dev.taskmanager.util.JsonManipulator;
 
 import java.util.List;
 import java.util.Scanner;

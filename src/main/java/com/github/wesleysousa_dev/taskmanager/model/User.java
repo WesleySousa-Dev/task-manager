@@ -1,4 +1,4 @@
-package org.example.model;
+package com.github.wesleysousa_dev.taskmanager.model;
 
 import java.util.ArrayList;
 import java.util.List;
