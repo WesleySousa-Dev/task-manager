@@ -5,15 +5,14 @@ import java.util.Scanner;
 public class UserInterface {
     private Scanner scanner = new Scanner(System.in);
 
-    public String askStr(String message) {
-        System.out.println(message);
+    public String askStr() {
         return scanner.nextLine();
     }
 
-    public int askInt(String message) {
-        System.out.println(message);
+    public int askInt() {
         int number = scanner.nextInt();
         scanner.nextLine();
         return number;
     }
+
 }
