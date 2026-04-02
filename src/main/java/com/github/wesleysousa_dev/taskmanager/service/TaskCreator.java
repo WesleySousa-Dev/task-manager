@@ -6,29 +6,41 @@ import com.github.wesleysousa_dev.taskmanager.model.User;
 import com.github.wesleysousa_dev.taskmanager.repository.UserRepository;
 
 public class TaskCreator {
-    UserRepository userRepository;
-    User currentUser;
-    Task task = new Task();
-    UserInterface userInterface = new UserInterface();
+    private UserRepository userRepository;
+    private UserIO userInterface;
 
-    public TaskCreator() {}
-
-    public TaskCreator(UserRepository userRepository, User currentUser) {
+    public TaskCreator(UserRepository userRepository, UserIO userInterface) {
         this.userRepository = userRepository;
-        this.currentUser = currentUser;
+        this.userInterface = userInterface;
     }
 
-    public void createTask(){
-        setTaskData();
+    public void createTask(User currentUser){
+        Task task = new Task();
+
+        setTaskData(task);
         currentUser.addTaskList(task);
         userRepository.addUser(currentUser);
+        System.out.println("Tarefa criada com sucesso!");
     }
 
-    private void setTaskData() {
+    private void setTaskData(Task task) {
+        userInterface.showMessage("Digite o nome da sua tarefa: ");
         task.setName(userInterface.askStr());
+        userInterface.showMessage("Digite a de4scrição da sua tarefa:");
         task.setDescription(userInterface.askStr());
-        task.setPriority(Priority.BAIXA);
+        userInterface.showMessage("Qual a prioridade da sua tarefa");
+        userInterface.showMessage("[BAIXA], [MEDIA] ou [ALTA]");
+        task.setPriority(setTaskPriority(userInterface.askStr()));
         task.setStatus(false);
+    }
+
+    private Priority setTaskPriority(String priority){
+        for(Priority p : Priority.values()){
+            if(p.name().equalsIgnoreCase(priority.toUpperCase())) {
+                return p;
+            }
+        }
+        throw new RuntimeException("A opção " + '[' + priority + ']' + " não é uma opção valida");
     }
 
 

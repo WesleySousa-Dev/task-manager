@@ -8,26 +8,38 @@ import java.util.Optional;
 
 public class UserLogin {
     private UserRepository userRepository;
+    private UserIO userInterface;
     private User currentUser;
 
-    public UserLogin() {}
-
-    public UserLogin(UserRepository userRepository) {
+    public UserLogin(UserRepository userRepository, UserIO userInterface) {
         this.userRepository = userRepository;
+        this.userInterface = userInterface;
     }
 
-    public void authenticate(String name){
-        Optional<User> findUser = userRepository.findByName(name);
+    public boolean authenticate(){
+        String userName = userInterface.askStr();
+
+        Optional<User> findUser = userRepository.findByName(userName);
 
         if(findUser.isPresent()) {
-            System.out.println("Usuario encontrado");
+            userInterface.showMessage("Usuario encontrado");
             currentUser = findUser.get();
+            return true;
         } else {
-            System.out.println("Usuario não encontrado!");
+            currentUser = null;
+            userInterface.showMessage("Usuario não encontrado!");
+            return false;
         }
     }
 
-    public User getCurrentUser(){
-        return currentUser;
+    public boolean authenticated() {
+        if (getCurrentUser().isPresent()) {
+            return true;
+        }
+        return false;
+    }
+
+    public Optional<User> getCurrentUser() {
+        return Optional.ofNullable(currentUser);
     }
 }

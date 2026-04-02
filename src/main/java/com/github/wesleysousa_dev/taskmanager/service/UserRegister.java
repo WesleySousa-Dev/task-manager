@@ -5,14 +5,15 @@ import com.github.wesleysousa_dev.taskmanager.repository.UserRepository;
 
 public class UserRegister {
     UserRepository userRepository;
-    UserInterface userInterface = new UserInterface();
+    UserIO userInterface = new UserIO();
     User user = new User();
 
     public UserRegister(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 
-    public void userRegister() {
+    public void register() {
+        userInterface.showMessage("Digite o seu nome para registrar: ");
         user.setName(userInterface.askStr());
         userRepository.addUser(user);
     }
