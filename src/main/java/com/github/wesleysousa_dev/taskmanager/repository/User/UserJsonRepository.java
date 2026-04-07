@@ -1,4 +1,4 @@
-package com.github.wesleysousa_dev.taskmanager.repository;
+package com.github.wesleysousa_dev.taskmanager.repository.User;
 
 import com.github.wesleysousa_dev.taskmanager.model.User;
 import com.github.wesleysousa_dev.taskmanager.util.JsonManipulator;
@@ -19,7 +19,7 @@ public class UserJsonRepository implements UserRepository{
         return users;
     }
 
-    @Override
+  @Override
     public Optional<User> findByName(String name) {
         return users.stream().filter(u -> u.getName().equals(name)).findFirst();
     }

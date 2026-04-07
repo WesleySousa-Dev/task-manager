@@ -1,9 +1,7 @@
-package com.github.wesleysousa_dev.taskmanager.repository;
+package com.github.wesleysousa_dev.taskmanager.repository.User;
 
-import com.github.wesleysousa_dev.taskmanager.model.Task;
 import com.github.wesleysousa_dev.taskmanager.model.User;
 
-import java.util.List;
 import java.util.Optional;
 
 public interface UserRepository {
