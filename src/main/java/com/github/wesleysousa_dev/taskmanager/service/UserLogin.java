@@ -1,6 +1,7 @@
 package com.github.wesleysousa_dev.taskmanager.service;
 
 import com.github.wesleysousa_dev.taskmanager.model.User;
+import com.github.wesleysousa_dev.taskmanager.repository.UserJsonRepository;
 import com.github.wesleysousa_dev.taskmanager.repository.UserRepository;
 
 import java.util.Optional;
@@ -30,13 +31,6 @@ public class UserLogin {
             userInterface.showMessage("Usuario não encontrado!");
             return false;
         }
-    }
-
-    public boolean authenticated() {
-        if (getCurrentUser().isPresent()) {
-            return true;
-        }
-        return false;
     }
 
     public Optional<User> getCurrentUser() {

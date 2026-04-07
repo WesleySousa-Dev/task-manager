@@ -6,8 +6,8 @@ import com.github.wesleysousa_dev.taskmanager.model.User;
 import com.github.wesleysousa_dev.taskmanager.repository.UserRepository;
 
 public class TaskCreator {
-    private UserRepository userRepository;
     private UserIO userInterface;
+    private UserRepository userRepository;
 
     public TaskCreator(UserRepository userRepository, UserIO userInterface) {
         this.userRepository = userRepository;
