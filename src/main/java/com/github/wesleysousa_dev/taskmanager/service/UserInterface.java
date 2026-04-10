@@ -1,18 +1,21 @@
 package com.github.wesleysousa_dev.taskmanager.service;
 
 import com.github.wesleysousa_dev.taskmanager.model.User;
+import com.github.wesleysousa_dev.taskmanager.repository.Task.TaskRepository;
 
 public class UserInterface {
     private UserIO userInterface;
     private UserLogin userLogin;
+    private TaskRepository taskRepository;
     private UserRegister userRegister;
     private TaskCreator taskCreator;
 
     private User currentUser;
 
-    public UserInterface(UserIO userInterface, UserLogin userLogin, UserRegister userRegister, TaskCreator taskCreator) {
+    public UserInterface(UserIO userInterface, UserLogin userLogin,TaskRepository taskRepository, UserRegister userRegister, TaskCreator taskCreator) {
         this.userInterface = userInterface;
         this.userLogin = userLogin;
+        this.taskRepository = taskRepository;
         this.userRegister = userRegister;
         this.taskCreator = taskCreator;
     }
@@ -49,10 +52,11 @@ public class UserInterface {
             switch (option) {
                 case 1:
                     taskCreator.createTask(user); break;
-                case 2: currentUser.getTaskList()
-                        .forEach(l -> userInterface.showMessage("Name: " + l.getName() +
-                                "\nDescription: "+ l.getDescription() +
-                                "\nPriority: "+ l.getPriority()));
+                case 2: taskRepository.taskList(currentUser)
+                        .forEach(t -> userInterface.showMessage(
+                                "\nNome da tarefa: " + t.getName() +
+                                "\nDescrição: " + t.getDescription() +
+                                "\nPrioridade: " + t.getPriority()));
             }
         }
     }

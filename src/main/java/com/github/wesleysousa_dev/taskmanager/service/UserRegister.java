@@ -1,8 +1,7 @@
 package com.github.wesleysousa_dev.taskmanager.service;
 
 import com.github.wesleysousa_dev.taskmanager.model.User;
-import com.github.wesleysousa_dev.taskmanager.repository.UserJsonRepository;
-import com.github.wesleysousa_dev.taskmanager.repository.UserRepository;
+import com.github.wesleysousa_dev.taskmanager.repository.User.UserRepository;
 
 public class UserRegister {
     private UserRepository userRepository;

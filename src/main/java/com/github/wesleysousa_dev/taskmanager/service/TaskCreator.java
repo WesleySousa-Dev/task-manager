@@ -3,14 +3,16 @@ package com.github.wesleysousa_dev.taskmanager.service;
 import com.github.wesleysousa_dev.taskmanager.model.Priority;
 import com.github.wesleysousa_dev.taskmanager.model.Task;
 import com.github.wesleysousa_dev.taskmanager.model.User;
-import com.github.wesleysousa_dev.taskmanager.repository.UserRepository;
+import com.github.wesleysousa_dev.taskmanager.repository.Task.TaskRepository;
+import com.github.wesleysousa_dev.taskmanager.repository.User.UserRepository;
 
 public class TaskCreator {
     private UserIO userInterface;
     private UserRepository userRepository;
-
-    public TaskCreator(UserRepository userRepository, UserIO userInterface) {
-        this.userRepository = userRepository;
+    private TaskRepository taskRepository;
+    public TaskCreator(TaskRepository taskRepository, UserIO userInterface) {
+       // this.userRepository = userRepository;
+        this.taskRepository = taskRepository;
         this.userInterface = userInterface;
     }
 
@@ -18,8 +20,7 @@ public class TaskCreator {
         Task task = new Task();
 
         setTaskData(task);
-        currentUser.addTaskList(task);
-        userRepository.addUser(currentUser);
+        taskRepository.addTask(currentUser, task);
         System.out.println("Tarefa criada com sucesso!");
     }
 
