@@ -29,4 +29,9 @@ public class UserJsonRepository implements UserRepository{
         users.add(user);
         jsonManipulator.createJson(users);
     }
+
+    @Override
+    public void addAll() {
+        jsonManipulator.createJson(users);
+    }
 }

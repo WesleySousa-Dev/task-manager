@@ -7,4 +7,6 @@ import java.util.Optional;
 public interface UserRepository {
     public Optional<User> findByName(String name);
     public void addUser(User user);
+
+    void addAll();
 }

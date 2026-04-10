@@ -8,4 +8,5 @@ import java.util.Optional;
 
 public interface TaskRepository {
     public List<Task> taskList(User currentUser);
+    public void addTask(User currentUser, Task task);
 }
